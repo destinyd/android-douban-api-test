@@ -18,11 +18,13 @@
             android:layout_height="wrap_content"
             android:text="搜索"
             android:id="@+id/btn_search" android:layout_alignBaseline="@+id/et_q"
-            android:layout_alignBottom="@+id/et_q" android:layout_alignParentRight="true"/>
-    <ListView
+            android:layout_alignBottom="@+id/et_q" android:layout_alignParentRight="true"
+            android:onClick="btn_search_click"/>
+    <com.costum.android.widget.LoadMoreListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listView" android:layout_below="@+id/et_q" android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true" android:layout_alignParentBottom="true"/>
+            android:id="@+id/lv_movies" android:layout_below="@+id/et_q" android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+            />
 
 </RelativeLayout>
