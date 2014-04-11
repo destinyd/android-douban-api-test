@@ -12,6 +12,7 @@ import com.github.kevinsawicki.http.HttpRequest;
 import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.constants.DefaultConfigs;
+import com.realityandapp.model.v2.Images;
 import com.realityandapp.model.v2.Subject;
 import roboguice.util.RoboAsyncTask;
 
@@ -208,18 +209,20 @@ public class ImageLoader {
         return this;
     }
 
-    public ImageLoader bind(final ImageView view, final Subject subject) {
-        return bind(view,subject, "small");
+    public ImageLoader bind(final ImageView view, final Images images) {
+        return bind(view,images, "small");
     }
 
-    public ImageLoader bind(final ImageView view, final Subject subject, final String type) {
+    public ImageLoader bind(final ImageView view, final Images images, final String type) {
         final String imgurl;
-        if(type == "medium")
-            imgurl = subject.getMediumUrl();
+        if(images == null)
+            imgurl = null;
+        else if(type == "medium")
+            imgurl = images.getMedium();
         else if(type == "large")
-            imgurl = subject.getLargeUrl();
+            imgurl = images.getLarge();
         else
-            imgurl = subject.getSmallUrl();
+            imgurl = images.getSmall();
 
         if (!(imgurl != null && imgurl.length()>0))
             return setImage(loadingAvatar, view);

@@ -15,3 +15,5 @@ http://github.com/destinyd/android-pulltorefresh-and-loadmore
 睡觉，明天争取把后面的都弄完
 ***
 p2 电影详情页，还差导演和演员，已经想好怎么做，分开做个保存
+***
+p2 电影详情页完成

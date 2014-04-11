@@ -44,4 +44,20 @@ public class Person implements Serializable {
     public void setAvatars(Images avatars) {
         this.avatars = avatars;
     }
+
+    public String getSmallUrl(){
+        if(avatars != null)
+            return avatars.getSmall();
+        return "";
+    }
+    public String getMediumUrl(){
+        if(avatars != null)
+            return avatars.getMedium();
+        return "";
+    }
+    public String getLargeUrl(){
+        if(avatars != null)
+            return avatars.getLarge();
+        return "";
+    }
 }

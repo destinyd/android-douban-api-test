@@ -50,7 +50,7 @@ public class AdapterMovies extends SingleTypeAdapter<Subject> {
 //        setGone(4, true);
 //        setGone(5, true);
 
-        avatars.bind(imageView(3), subject);
+        avatars.bind(imageView(3), subject.getImages());
 //
 //        if(joke.isVideo())
 //        {
