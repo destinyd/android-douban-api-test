@@ -17,7 +17,7 @@ http://github.com/destinyd/android-pulltorefresh-and-loadmore
 p2 电影详情页，还差导演和演员，已经想好怎么做，分开做个保存
 ***
 p2 电影详情页完成
-**
+***
 p3 名人页搞定，ScrollView 和 ListView冲突搞死人
-**
+***
 p3 back, home menu done, p3 done;
