@@ -55,6 +55,9 @@ public class ActivityCelebrity extends BaseActivity {
 
         setContentView(R.layout.activity_celebrity);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         movieService = new MovieService();
 
         person_to_view();
@@ -114,5 +117,11 @@ public class ActivityCelebrity extends BaseActivity {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Work work = ((Work) l.getItemAtPosition(position));
         startActivity(new Intent(this, ActivitySubject.class).putExtra(Extras.SUBJECT, work.getSubject()));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        getSupportMenuInflater().inflate(R.menu.home, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -13,6 +13,7 @@
         <platform.version>4.1.1.4
         </platform.version>
         <android.plugin.version>3.9.0-rc.1</android.plugin.version>
+        <abs.version>4.2.0</abs.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,30 @@
             <artifactId>loadmorelistview</artifactId>
             <version>0.1.0</version>
             <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>com.actionbarsherlock</groupId>
+            <artifactId>actionbarsherlock</artifactId>
+            <version>4.4.0</version>
+            <type>apklib</type>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.actionbarsherlock</groupId>-->
+            <!--<artifactId>library</artifactId>-->
+            <!--<version>${abs.version}</version>-->
+            <!--<type>apklib</type>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.actionbarsherlock</groupId>-->
+            <!--<artifactId>library</artifactId>-->
+            <!--<version>${abs.version}</version>-->
+            <!--<type>jar</type>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.github.rtyley</groupId>
+            <artifactId>roboguice-sherlock</artifactId>
+            <version>1.5</version>
         </dependency>
     </dependencies>
     <build>

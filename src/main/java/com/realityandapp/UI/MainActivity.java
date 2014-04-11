@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockActivity;
+import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
+import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.UI.Adapters.AdapterSubject;
@@ -20,7 +23,7 @@ import roboguice.inject.InjectView;
 import roboguice.util.RoboAsyncTask;
 
 public class MainActivity extends
-        RoboActivity {
+        BaseActivity {
 
     private String str_q;
     SubjectList subjectList;
@@ -57,13 +60,6 @@ public class MainActivity extends
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(com.realityandapp.R.menu.main, menu);
-        return true;
     }
 
     public void btn_search_click(View view) {

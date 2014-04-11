@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.UI.Adapters.AdapterCelebrity;
@@ -56,6 +59,9 @@ public class ActivitySubject extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_subject);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         movieService = new MovieService();
 
@@ -131,5 +137,11 @@ public class ActivitySubject extends BaseActivity {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Celebrity celebrity = ((Celebrity) l.getItemAtPosition(position));
         startActivity(new Intent(this, ActivityCelebrity.class).putExtra(Extras.CELEBRITY, celebrity));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        getSupportMenuInflater().inflate(R.menu.home, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
