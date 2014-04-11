@@ -1,5 +1,7 @@
 package com.realityandapp.model.v2;
 
+import com.realityandapp.model.History;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,6 +21,15 @@ public class Celebrity implements Serializable {
     private String birthday;
     private String born_place;
     private List<Work> works;
+
+    public Celebrity() {
+    }
+
+    public Celebrity(History history) {
+        id = history.getId();
+        name = history.getName();
+        avatars = history.getImages();
+    }
 
     public String getId() {
         return id;

@@ -32,6 +32,9 @@
         <activity
                 android:name=".UI.ActivityCelebrity"
                 />
+        <activity
+                android:name=".UI.ActivityHistories"
+                />
     </application>
 
 </manifest>

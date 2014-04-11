@@ -13,7 +13,6 @@ import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.constants.DefaultConfigs;
 import com.realityandapp.model.v2.Images;
-import com.realityandapp.model.v2.Subject;
 import roboguice.util.RoboAsyncTask;
 
 import java.io.*;

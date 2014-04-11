@@ -54,12 +54,12 @@
             <version>0.9</version>
             <type>apklib</type>
         </dependency>
-        <dependency>
-            <groupId>com.costum</groupId>
-            <artifactId>loadmorelistview</artifactId>
-            <version>0.1.0</version>
-            <type>apklib</type>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.costum</groupId>-->
+            <!--<artifactId>loadmorelistview</artifactId>-->
+            <!--<version>0.1.0</version>-->
+            <!--<type>apklib</type>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.actionbarsherlock</groupId>
             <artifactId>actionbarsherlock</artifactId>

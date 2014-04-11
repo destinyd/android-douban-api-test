@@ -14,6 +14,7 @@ import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.UI.Adapters.AdapterSubject;
 import com.realityandapp.constants.Extras;
+import com.realityandapp.core.HistoriesController;
 import com.realityandapp.core.ImageLoader;
 import com.realityandapp.model.v2.Subject;
 import com.realityandapp.model.v2.SubjectList;
@@ -60,6 +61,7 @@ public class MainActivity extends
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
+        HistoriesController.readConfiguration();
     }
 
     public void btn_search_click(View view) {
@@ -113,6 +115,12 @@ public class MainActivity extends
 //            adapter.setItems(subjectList.getSubjects());
 //            adapter.notifyDataSetChanged();
 //        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+        getSupportMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

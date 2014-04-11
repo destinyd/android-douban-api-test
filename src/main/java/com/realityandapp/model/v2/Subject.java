@@ -1,6 +1,7 @@
 package com.realityandapp.model.v2;
 
 import android.text.TextUtils;
+import com.realityandapp.model.History;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,6 +28,15 @@ public class Subject implements Serializable {
     List<Celebrity> casts;
 
     List<Celebrity> directors;
+
+    public Subject() {
+    }
+
+    public Subject(History history) {
+        id = history.getId();
+        title = history.getName();
+        images = history.getImages();
+    }
 
     public Rating getRating() {
         return rating;

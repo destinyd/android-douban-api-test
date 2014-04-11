@@ -1,5 +1,5 @@
 第一阶段已经完成。
-项目需要Intellij IDEA打开使用，为maven项目
+~~项目需要Intellij IDEA打开使用，为maven项目
 ```
 <dependency>
   <groupId>com.costum</groupId>
@@ -11,6 +11,7 @@
 这一部分可能会缺少，请到我的github里面clone并maven install
 项目地址
 http://github.com/destinyd/android-pulltorefresh-and-loadmore
+~~
 ***
 睡觉，明天争取把后面的都弄完
 ***
@@ -23,3 +24,5 @@ p3 名人页搞定，ScrollView 和 ListView冲突搞死人
 p3 back, home menu done, p3 done;
 ***
 忘记拿2.3.3跑一遍了， 改了下主题OK
+***
+extra完成,删除loadmorelistview依赖

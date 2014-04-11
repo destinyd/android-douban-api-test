@@ -50,6 +50,10 @@ public class BaseActivity extends RoboSherlockActivity {
                 homeIntent.addFlags(FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(homeIntent);
                 return true;
+            case R.id.menu_histories:
+                Intent historiesIntent = new Intent(this, ActivityHistories.class);
+                startActivity(historiesIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

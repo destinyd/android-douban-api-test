@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.UI.Adapters.AdapterCelebrity;
 import com.realityandapp.constants.Extras;
+import com.realityandapp.core.HistoriesController;
 import com.realityandapp.core.ImageLoader;
 import com.realityandapp.model.v2.Celebrity;
 import com.realityandapp.model.v2.Subject;
@@ -83,14 +84,23 @@ public class ActivitySubject extends BaseActivity {
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
+        HistoriesController.getFactory().record(subject);
     }
 
     private void subject_to_view() {
         avatars.bind(iv_image, subject.getImages(), "medium");
         tv_name.setText(subject.getTitle());
-        tv_rating.setText(subject.getRating().getAverage().toString());
-        tv_year.setText(subject.getYear().toString());
-        tv_subtype.setText(subject.getSubtype());
+
+        subject_more_to_view(subject);
+    }
+
+    private void subject_more_to_view(Subject subject){
+        if(subject.getRating() != null && subject.getRating().getAverage() != null)
+            tv_rating.setText(subject.getRating().getAverage().toString());
+        if(subject.getYear() != null)
+            tv_year.setText(subject.getYear().toString());
+        if(subject.getSubtype() != null)
+            tv_subtype.setText(subject.getSubtype());
     }
 
     protected void get_remote_subject_to_view() {
@@ -113,6 +123,7 @@ public class ActivitySubject extends BaseActivity {
     }
 
     private void full_subject_to_view() {
+        subject_more_to_view(full_subject);
         tv_countries.setText(full_subject.getCountriesString());
         directors_to_view();
         casts_to_view();

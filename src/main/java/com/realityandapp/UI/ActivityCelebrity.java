@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 import com.realityandapp.R;
 import com.realityandapp.UI.Adapters.AdapterWork;
 import com.realityandapp.constants.Extras;
+import com.realityandapp.core.HistoriesController;
 import com.realityandapp.core.ImageLoader;
 import com.realityandapp.model.v2.Celebrity;
 import com.realityandapp.model.v2.Work;
@@ -71,12 +72,13 @@ public class ActivityCelebrity extends BaseActivity {
                 onListItemClick((ListView) parent, view, position, id);
             }
         });
+
+        HistoriesController.getFactory().record(celebrity);
     }
 
     private void person_to_view() {
         avatars.bind(iv_image, celebrity.getAvatars(), "medium");
         tv_name.setText(celebrity.getName());
-
     }
 
     protected void get_remote_person_to_view() {
@@ -99,10 +101,14 @@ public class ActivityCelebrity extends BaseActivity {
     }
 
     private void full_person_to_view() {
-        tv_name_en.setText(String.valueOf(full_celebrity.getName_en()));
-        tv_gender.setText(String.valueOf(full_celebrity.getGender()));
-        tv_birthday.setText(String.valueOf(full_celebrity.getBirthday()));
-        tv_born_place.setText(String.valueOf(full_celebrity.getBorn_place()));
+        if (full_celebrity.getName_en() != null)
+            tv_name_en.setText(full_celebrity.getName_en());
+        if (full_celebrity.getGender() != null)
+            tv_gender.setText(full_celebrity.getGender());
+        if (full_celebrity.getBirthday() != null)
+            tv_birthday.setText(full_celebrity.getBirthday());
+        if (full_celebrity.getBorn_place() != null)
+            tv_born_place.setText(full_celebrity.getBorn_place());
         works_to_view();
     }
 

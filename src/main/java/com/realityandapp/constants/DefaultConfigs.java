@@ -13,5 +13,6 @@ public class DefaultConfigs {
   public static final String ACCESS_TOKEN_REDIRECT_URL = "http://realityandapp.com";
 
   public static final String SDCARD_PATH = "/.douban";
+  public static final String HISTORIES_FILENAME = "histories.json";
 
 }
