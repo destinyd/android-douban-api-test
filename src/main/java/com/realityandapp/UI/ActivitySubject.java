@@ -1,24 +1,23 @@
 package com.realityandapp.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.*;
 import com.google.inject.Inject;
 import com.realityandapp.R;
-import com.realityandapp.UI.Adapters.AdapterMovies;
-import com.realityandapp.UI.Adapters.AdapterPerson;
+import com.realityandapp.UI.Adapters.AdapterCelebrity;
 import com.realityandapp.constants.Extras;
 import com.realityandapp.core.ImageLoader;
+import com.realityandapp.model.v2.Celebrity;
 import com.realityandapp.model.v2.Subject;
 import com.realityandapp.service.MovieService;
-import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
 import roboguice.util.RoboAsyncTask;
 
 
-public class ActivitySubject extends RoboActivity {
+public class ActivitySubject extends BaseActivity {
 
     @InjectView(R.id.iv_image)
     protected ImageView iv_image;
@@ -49,8 +48,8 @@ public class ActivitySubject extends RoboActivity {
     MovieService movieService;
     protected Subject full_subject;
 
-    AdapterPerson adapterDirectors = null;
-    AdapterPerson adapterCasts = null;
+    AdapterCelebrity adapterDirectors = null;
+    AdapterCelebrity adapterCasts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +62,21 @@ public class ActivitySubject extends RoboActivity {
         subject_to_view();
         get_remote_subject_to_view();
 
+        lv_casts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                onListItemClick((ListView) parent, view, position, id);
+            }
+        });
+
+        lv_directors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                onListItemClick((ListView) parent, view, position, id);
+            }
+        });
     }
 
     private void subject_to_view() {
@@ -99,16 +113,23 @@ public class ActivitySubject extends RoboActivity {
     }
 
     private void directors_to_view() {
-        adapterDirectors = new AdapterPerson(
+        adapterDirectors = new AdapterCelebrity(
                 getLayoutInflater(), full_subject.getDirectors(),
                 avatars);
         lv_directors.setAdapter(adapterDirectors);
+        setListViewHeightBasedOnChildren(lv_directors);
     }
 
     private void casts_to_view() {
-        adapterCasts = new AdapterPerson(
+        adapterCasts = new AdapterCelebrity(
                 getLayoutInflater(), full_subject.getCasts(),
                 avatars);
         lv_casts.setAdapter(adapterCasts);
+        setListViewHeightBasedOnChildren(lv_casts);
+    }
+
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Celebrity celebrity = ((Celebrity) l.getItemAtPosition(position));
+        startActivity(new Intent(this, ActivityCelebrity.class).putExtra(Extras.CELEBRITY, celebrity));
     }
 }

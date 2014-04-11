@@ -6,10 +6,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import com.costum.android.widget.LoadMoreListView;
+import android.widget.ListView;
 import com.google.inject.Inject;
 import com.realityandapp.R;
-import com.realityandapp.UI.Adapters.AdapterMovies;
+import com.realityandapp.UI.Adapters.AdapterSubject;
 import com.realityandapp.constants.Extras;
 import com.realityandapp.core.ImageLoader;
 import com.realityandapp.model.v2.Subject;
@@ -24,13 +24,13 @@ public class MainActivity extends
 
     private String str_q;
     SubjectList subjectList;
-    AdapterMovies adapter = null;
+    AdapterSubject adapter = null;
 
     @InjectView(R.id.et_q)
     private EditText et_q;
 
     @InjectView(R.id.lv_movies)
-    private LoadMoreListView lv_movies;
+    private ListView lv_movies;
 
     @Inject
     private ImageLoader avatars;
@@ -54,7 +54,7 @@ public class MainActivity extends
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                onListItemClick((LoadMoreListView) parent, view, position, id);
+                onListItemClick((ListView) parent, view, position, id);
             }
         });
     }
@@ -92,12 +92,12 @@ public class MainActivity extends
 
             @Override
             protected void onFinally() throws RuntimeException {
-                lv_movies.onLoadMoreComplete();
+//                lv_movies.onLoadMoreComplete();
             }
         }.execute();
     }
 
-    public void onListItemClick(LoadMoreListView l, View v, int position, long id) {
+    public void onListItemClick(ListView l, View v, int position, long id) {
         Subject joke = ((Subject) l.getItemAtPosition(position));
         startActivity(new Intent(this, ActivitySubject.class).putExtra(Extras.SUBJECT, joke));
 
@@ -107,7 +107,7 @@ public class MainActivity extends
     private void subjectList_to_listview() {
 //        if(adapter == null)
 //        {
-        adapter = new AdapterMovies(
+        adapter = new AdapterSubject(
                 getLayoutInflater(), subjectList.getSubjects(),
                 avatars);
         lv_movies.setAdapter(adapter);

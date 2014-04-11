@@ -3,12 +3,12 @@ package com.realityandapp.service;
 import com.alibaba.fastjson.JSON;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.realityandapp.constants.RequestUrls;
+import com.realityandapp.model.v2.Celebrity;
 import com.realityandapp.model.v2.Subject;
 import com.realityandapp.model.v2.SubjectList;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.List;
 
 import static com.github.kevinsawicki.http.HttpRequest.get;
 
@@ -41,5 +41,12 @@ public class MovieService {
         HttpRequest request = get(url);
         String body = request.body();
         return JSON.parseObject(body, Subject.class);
+    }
+
+    public Celebrity getCelebrityById(String id){
+        String url = RequestUrls.DOUBAN_MOVIE_V2_CELEBRITY_PREFIX + id;
+        HttpRequest request = get(url);
+        String body = request.body();
+        return JSON.parseObject(body, Celebrity.class);
     }
 }

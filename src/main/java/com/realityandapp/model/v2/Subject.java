@@ -24,9 +24,9 @@ public class Subject implements Serializable {
 
     List<String> countries;
 
-    List<Person> casts;
+    List<Celebrity> casts;
 
-    List<Person> directors;
+    List<Celebrity> directors;
 
     public Rating getRating() {
         return rating;
@@ -100,11 +100,11 @@ public class Subject implements Serializable {
         this.images = images;
     }
 
-    public List<Person> getCasts() {
+    public List<Celebrity> getCasts() {
         return casts;
     }
 
-    public void setCasts(List<Person> casts) {
+    public void setCasts(List<Celebrity> casts) {
         this.casts = casts;
     }
 
@@ -116,11 +116,11 @@ public class Subject implements Serializable {
         this.countries = countries;
     }
 
-    public List<Person> getDirectors() {
+    public List<Celebrity> getDirectors() {
         return directors;
     }
 
-    public void setDirectors(List<Person> directors) {
+    public void setDirectors(List<Celebrity> directors) {
         this.directors = directors;
     }
 

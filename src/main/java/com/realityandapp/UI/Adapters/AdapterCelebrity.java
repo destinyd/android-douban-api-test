@@ -5,15 +5,14 @@ import android.view.LayoutInflater;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.realityandapp.R;
 import com.realityandapp.core.ImageLoader;
-import com.realityandapp.model.v2.Person;
-import com.realityandapp.model.v2.Subject;
+import com.realityandapp.model.v2.Celebrity;
 
 import java.util.List;
 
-public class AdapterPerson extends SingleTypeAdapter<Person> {
+public class AdapterCelebrity extends SingleTypeAdapter<Celebrity> {
     private final ImageLoader avatars;
 
-    public AdapterPerson(LayoutInflater inflater, List<Person> items, ImageLoader avatars) {
+    public AdapterCelebrity(LayoutInflater inflater, List<Celebrity> items, ImageLoader avatars) {
         super(inflater, R.layout.item_person); // ,,items
         setItems(items);
         this.avatars = avatars;
@@ -23,7 +22,7 @@ public class AdapterPerson extends SingleTypeAdapter<Person> {
      * @param inflater
      * @param items
      */
-    public AdapterPerson(LayoutInflater inflater, List<Person> items) {
+    public AdapterCelebrity(LayoutInflater inflater, List<Celebrity> items) {
         this(inflater, items, null);
     }
     @Override
@@ -39,7 +38,7 @@ public class AdapterPerson extends SingleTypeAdapter<Person> {
     }
 
     @Override
-    protected void update(int position, Person peroson) {
+    protected void update(int position, Celebrity peroson) {
         setText(0, peroson.getName());
 
         avatars.bind(imageView(1), peroson.getAvatars());

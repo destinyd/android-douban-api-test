@@ -5,4 +5,5 @@ package com.realityandapp.constants;
  */
 public class Extras {
     public static final String SUBJECT = "Subject";
+    public static final String CELEBRITY = "Celebrity";
 }

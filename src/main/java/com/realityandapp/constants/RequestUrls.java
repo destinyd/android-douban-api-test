@@ -33,6 +33,8 @@ public class RequestUrls {
   public static final String DOUBAN_MOVIE_V2_PREFIX = DefaultConfigs.API_URL_PREFIX + "/v2/movie";
 
   public static final String DOUBAN_MOVIE_V2_SEARCH_PREFIX = DefaultConfigs.API_URL_PREFIX + "/v2/movie/search";
+
+  public static final String DOUBAN_MOVIE_V2_CELEBRITY_PREFIX = DefaultConfigs.API_URL_PREFIX + "/v2/movie/celebrity/";
   
 //  /**
 //   * Note services

@@ -20,7 +20,7 @@
             android:id="@+id/btn_search" android:layout_alignBaseline="@+id/et_q"
             android:layout_alignBottom="@+id/et_q" android:layout_alignParentRight="true"
             android:onClick="btn_search_click"/>
-    <com.costum.android.widget.LoadMoreListView
+    <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lv_movies" android:layout_below="@+id/et_q" android:layout_alignParentLeft="true"

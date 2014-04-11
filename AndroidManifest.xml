@@ -29,6 +29,9 @@
         <activity
                 android:name=".UI.ActivitySubject"
                 />
+        <activity
+                android:name=".UI.ActivityCelebrity"
+                />
     </application>
 
 </manifest>

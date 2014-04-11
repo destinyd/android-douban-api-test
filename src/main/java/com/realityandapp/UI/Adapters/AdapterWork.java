@@ -1,19 +1,19 @@
 package com.realityandapp.UI.Adapters;
 
-import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
 import com.realityandapp.R;
 import com.realityandapp.core.ImageLoader;
 import com.realityandapp.model.v2.Subject;
+import com.realityandapp.model.v2.Work;
 
 import java.util.List;
 
-public class AdapterMovies extends SingleTypeAdapter<Subject> {
+public class AdapterWork extends SingleTypeAdapter<Work> {
     private final ImageLoader avatars;
 
-    public AdapterMovies(LayoutInflater inflater, List<Subject> items, ImageLoader avatars) {
+    public AdapterWork(LayoutInflater inflater, List<Work> items, ImageLoader avatars) {
         super(inflater, R.layout.item_subject); // ,,items
         setItems(items);
         this.avatars = avatars;
@@ -23,14 +23,15 @@ public class AdapterMovies extends SingleTypeAdapter<Subject> {
      * @param inflater
      * @param items
      */
-    public AdapterMovies(LayoutInflater inflater, List<Subject> items) {
+    public AdapterWork(LayoutInflater inflater, List<Work> items) {
         this(inflater, items, null);
     }
     @Override
     public long getItemId(final int position) {
-        final String id = getItem(position).getId().toString();
-        return !TextUtils.isEmpty(id) ? id.hashCode() : super
-                .getItemId(position);
+        return getItem(position).hashCode();
+//        final String id = getItem(position).hashCode();
+//        return !TextUtils.isEmpty(id) ? id.hashCode() : super
+//                .getItemId(position);
     }
 
     @Override
@@ -39,18 +40,26 @@ public class AdapterMovies extends SingleTypeAdapter<Subject> {
     }
 
     @Override
-    protected void update(int position, Subject subject) {
+    protected void update(int position, Work work) {
 //        super.update(position, subject);
 
-        setText(0, subject.getTitle());
-        setText(1, subject.getYear().toString());
-        setText(2, subject.getRating().getAverage().toString());
-//
-//        setGone(3, true);
-//        setGone(4, true);
-//        setGone(5, true);
-
-        avatars.bind(imageView(3), subject.getImages());
+        Subject subject = work.getSubject();
+        if(subject != null)
+        {
+            setText(0, subject.getTitle());
+            setText(1, String.valueOf(subject.getYear()));
+            if(subject.getRating() != null)
+                setText(2, String.valueOf(subject.getRating().getAverage()));
+            else
+                setText(2, "");
+            avatars.bind(imageView(3), subject.getImages());
+        }
+        else
+        {
+            setText(0, "");
+            setText(1, "");
+            setText(2, "");
+        }
 //
 //        if(joke.isVideo())
 //        {
