@@ -21,3 +21,5 @@ p2 电影详情页完成
 p3 名人页搞定，ScrollView 和 ListView冲突搞死人
 ***
 p3 back, home menu done, p3 done;
+***
+忘记拿2.3.3跑一遍了， 改了下主题OK
