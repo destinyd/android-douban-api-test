@@ -3,6 +3,7 @@ package com.realityandapp.service;
 import com.alibaba.fastjson.JSON;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.realityandapp.constants.RequestUrls;
+import com.realityandapp.model.v2.Subject;
 import com.realityandapp.model.v2.SubjectList;
 
 import java.io.UnsupportedEncodingException;
@@ -33,5 +34,12 @@ public class MovieService {
         HttpRequest request = get(url);
         String body = request.body();
         return JSON.parseObject(body, SubjectList.class);
+    }
+
+    public Subject getMovieById(String id){
+        String url = RequestUrls.DOUBAN_MOVIE_V2_SUBJECT_PREFIX + id;
+        HttpRequest request = get(url);
+        String body = request.body();
+        return JSON.parseObject(body, Subject.class);
     }
 }

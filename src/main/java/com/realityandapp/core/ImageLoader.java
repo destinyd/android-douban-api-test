@@ -74,6 +74,8 @@ public class ImageLoader {
 
     private BitmapFactory.Options options;
 
+//    private String type;
+
     /**
      * Create avatar helper
      *
@@ -134,20 +136,18 @@ public class ImageLoader {
     /**
      * Fetch avatar from URL
      *
-     * @param joke
+     * @param imgurl
      * @return bitmap
      */
 //    protected BitmapDrawable fetchAvatar(final String url, final String pictureId) {
-    protected BitmapDrawable fetchAvatar(final Subject joke) {
-//        Uri uri = Uri.parse(joke.getSmallUrl());
-//        uri.getPath();
-//        URL myURL = new URL(url);
-        String filename = getFileName(joke.getSmallUrl());
+    protected BitmapDrawable fetchAvatar(final String imgurl, final String type) {
+
+        String filename = getFileName(imgurl, type);
         String str_tmp_path = picturesDir + "/" + filename + "-raw";
         File srcFile = new File(str_tmp_path);
         if (!srcFile.getParentFile().isDirectory())
             srcFile.getParentFile().mkdirs();
-        HttpRequest request = HttpRequest.get(joke.getSmallUrl());
+        HttpRequest request = HttpRequest.get(imgurl);
         if (request.ok())
             request.receive(srcFile);
 
@@ -208,12 +208,23 @@ public class ImageLoader {
         return this;
     }
 
-    public ImageLoader bind(final ImageView view, final Subject subject) {//final String imgurl, final String pictureId) {
-        final String imgurl = subject.getSmallUrl();
-        if (!(imgurl != null && !imgurl.isEmpty()))
+    public ImageLoader bind(final ImageView view, final Subject subject) {
+        return bind(view,subject, "small");
+    }
+
+    public ImageLoader bind(final ImageView view, final Subject subject, final String type) {
+        final String imgurl;
+        if(type == "medium")
+            imgurl = subject.getMediumUrl();
+        else if(type == "large")
+            imgurl = subject.getLargeUrl();
+        else
+            imgurl = subject.getSmallUrl();
+
+        if (!(imgurl != null && imgurl.length()>0))
             return setImage(loadingAvatar, view);
 
-        final String filename = getFileName(subject.getSmallUrl());
+        final String filename = getFileName(imgurl, type);
 
         BitmapDrawable loadedImage = loaded.get(filename);
         if (loadedImage != null)
@@ -221,7 +232,6 @@ public class ImageLoader {
 
         setImage(loadingAvatar, view, filename);
 
-        final String loadUrl = imgurl;
         new FetchAvatarTask(context) {
 
             @Override
@@ -233,7 +243,7 @@ public class ImageLoader {
                 if (image != null)
                     return image;
                 else
-                    return fetchAvatar(subject);
+                    return fetchAvatar(imgurl, type);
             }
 
             @Override
@@ -276,11 +286,7 @@ public class ImageLoader {
         }
     }
 
-    public String getFileFullPath(String url){
-        return picturesDir + "/" + getFileName(url);
-    }
-
-    public static String getFileName(String url) {
+    public static String getFileName(String url, String type) {
         String filename = "";
         String result;
         int location = url.lastIndexOf("/");
@@ -293,7 +299,7 @@ public class ImageLoader {
         if (filename == null || "".equals(filename)) {
             filename = url.substring(url.lastIndexOf("/") + 1);
         }
-        return filename;
+        return type + "_" +filename;
     }
 
     public static int calculateInSampleSize(BitmapFactory.Options options,

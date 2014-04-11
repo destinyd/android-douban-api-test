@@ -1,6 +1,9 @@
 package com.realityandapp.model.v2;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by dd on 14-4-10.
@@ -11,12 +14,19 @@ public class Subject implements Serializable {
     String title,
             original_title,
             subtype,
-            alt;
-    Integer id,
+            alt,
+            id;
+    Integer
             year,
             collect_count;
 
     Images images;
+
+    List<String> countries;
+
+    List<Person> casts;
+
+    List<Person> directors;
 
     public Rating getRating() {
         return rating;
@@ -58,11 +68,11 @@ public class Subject implements Serializable {
         this.alt = alt;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -90,9 +100,49 @@ public class Subject implements Serializable {
         this.images = images;
     }
 
+    public List<Person> getCasts() {
+        return casts;
+    }
+
+    public void setCasts(List<Person> casts) {
+        this.casts = casts;
+    }
+
+    public List<String> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(List<String> countries) {
+        this.countries = countries;
+    }
+
+    public List<Person> getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(List<Person> directors) {
+        this.directors = directors;
+    }
+
     public String getSmallUrl(){
         if(images != null)
             return images.getSmall();
+        return "";
+    }
+    public String getMediumUrl(){
+        if(images != null)
+            return images.getMedium();
+        return "";
+    }
+    public String getLargeUrl(){
+        if(images != null)
+            return images.getLarge();
+        return "";
+    }
+
+    public String getCountriesString(){
+        if(countries != null)
+            return TextUtils.join(",",countries);
         return "";
     }
 }
